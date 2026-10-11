@@ -50,12 +50,10 @@ No additional packages are required. Enter the customer name and date, then choo
 
 ```text
 John Doe's Shopping Cart - February 1, 2025
-Number of Items: 8
-
 Nike Romaleos 2 @ $189 = $378
 Chocolate Chips 5 @ $3 = $15
 Powerbeats 2 Headphones 1 @ $128 = $128
-
+Number of Items: 8
 Total: $521
 ```
 
@@ -65,6 +63,6 @@ The program expects valid numeric prices and integer quantities.
 It uses floating-point prices as specified in the assignment, and cart contents
 are kept in memory only.
 
-Local checks cover the lesson's example output, cart updates, missing items,
-an empty cart, invalid menu choices, and quitting. The revised code still needs
-to be submitted to zyBooks to confirm its automated grading result.
+This repository preserves the code version that the author reports earned
+98/105 in zyBooks. One seven-point test remains unresolved. The output order
+and prompt spacing are retained from that submitted version.
