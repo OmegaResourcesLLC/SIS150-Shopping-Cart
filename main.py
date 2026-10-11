@@ -55,17 +55,17 @@ class ShoppingCart:
             f"{self.customer_name}'s Shopping Cart - "
             f"{self.current_date}"
         )
-        print(f"Number of Items: {self.get_num_items_in_cart()}")
-        print()
-
         if not self.cart_items:
             print("SHOPPING CART IS EMPTY")
-        else:
-            for item in self.cart_items:
-                item.print_item_cost()
+            print()
+            return 0
+
+        for item in self.cart_items:
+            item.print_item_cost()
+
+        print(f"Number of Items: {self.get_num_items_in_cart()}")
 
         total = self.get_cost_of_cart()
-        print()
         print(f"Total: ${total:g}")
         return total
 
@@ -83,9 +83,11 @@ def execute_menu(menuOp, theCart):
     if menuOp == "a":
         print("ADD ITEM TO CART")
         item = ItemToPurchase()
-        item.item_name = input("Enter the item name:\n")
-        item.item_price = float(input("Enter the item price:\n"))
-        item.item_quantity = int(input("Enter the item quantity:\n"))
+        item.item_name = input("Enter the item name: ")
+        item.item_price = float(input("Enter the item price: "))
+        item.item_quantity = int(input("Enter the item quantity: "))
+        print()
+
         theCart.add_item(item)
 
     elif menuOp == "r":
@@ -106,21 +108,25 @@ def execute_menu(menuOp, theCart):
 
 
 if __name__ == "__main__":
-    cust_name = input("Enter customer's name:\n")
-    day_date = input("Enter today's date:\n")
+    cust_name = input("Enter customer's name: ")
+    day_date = input("Enter today's date: ")
     print()
+
     print(f"Customer name: {cust_name}")
     print(f"Today's date: {day_date}")
 
     my_cart = ShoppingCart(cust_name, day_date)
 
-    while True:
-        print()
-        print_menu()
-        print()
+    print()
+    print_menu()
+    print()
+
+    menu_choice = input("Choose an option:\n")
+
+    while menu_choice != "q":
+        if menu_choice in ["a", "r", "c", "o"]:
+            execute_menu(menu_choice, my_cart)
+            print_menu()
+            print()
+
         menu_choice = input("Choose an option:\n")
-        while menu_choice not in ["a", "r", "c", "o", "q"]:
-            menu_choice = input("Choose an option:\n")
-        if menu_choice == "q":
-            break
-        execute_menu(menu_choice, my_cart)
